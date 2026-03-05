@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hariom Solar - Clean Energy Solutions</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Global Floating Quote Popup -->
+    <div class="quote-popup" id="quotePopup">
+        <div class="quote-popup-content">
+            <span class="close-btn" onclick="closeForm()">&times;</span>
+            <h2>Get Your Free Solar Quote</h2>
+
+            <form id="floatingQuoteForm">
+
+
+                <input type="text" id="name" name="fullName" placeholder="Full Name" required>
+
+                <input type="email" id="email" name="email" placeholder="Email Address" required>
+
+                <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+
+                <input type="text" id="city" name="city" placeholder="City / Location" required>
+
+                <select id="solarType" name="solarType" required>
+                    <option value="">Select Solar Type</option>
+                    <option value="Residential Solar">Residential Solar</option>
+                    <option value="Commercial Solar">Commercial Solar</option>
+                    <option value="Agriculture Solar">Agriculture Solar</option>
+                    <option value="Industrial Solar">Industrial Solar</option>
+                    <option value="Off-Grid Solar">Off-Grid Solar</option>
+                </select>
+
+                <button type="submit" class="btn btn-yellow">
+                    Submit Request
+                </button>
+                <p id="formMessage" class="form-message"></p>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <div class="nav-brand">
+                <img src="static/logo.png" alt="Hariom Solar Logo" class="custom-logo">
+                <span class="brand-name">Hariom Solar</span>
+            </div>
+
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#testimonials" class="nav-link">Testimonials</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <button onclick="showForm()" class="btn btn-primary">Get Quote</button>
+            </div>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars" id="menuIcon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <img src="https://images.unsplash.com/photo-1635424709961-f3a150459ad4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb2xhciUyMHBhbmVscyUyMHJvb2Z0b3AlMjBpbnN0YWxsYXRpb258ZW58MXx8fHwxNzcxODg2MDg0fDA&ixlib=rb-4.1.0&q=80&w=1080"
+                alt="Solar panels">
+            <div class="hero-overlay"></div>
+        </div>
+
+        <div class="container hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <i class="fas fa-sun"></i>
+                    <span>Clean Energy Solutions</span>
+                </div>
+
+                <h1 class="hero-title">
+                    Power Your Future with <span class="text-yellow">Hariom Solar</span>
+                </h1>
+
+                <p class="hero-description">
+                    Join thousands of homeowners who are saving money and protecting the planet with clean, renewable
+                    Hariom Solar solutions.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <button onclick="showForm()" class="btn btn-yellow">
+                        Get Free Quote
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="btn btn-outline">Learn More</button>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">25+</div>
+                        <div class="stat-label">Years Warranty</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">2K+</div>
+                        <div class="stat-label">Installations</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">99.99%</div>
+                        <div class="stat-label">Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits section-padding" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose Hariom Solar?</h2>
+                <p class="section-description">
+                    Discover the benefits of switching to clean, renewable solar power for your home or business.
+                </p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3 class="benefit-title">Save Money</h3>
+                    <p class="benefit-description">
+                        Reduce your electricity bills by up to 70% and enjoy long-term savings with Hariom Solar .
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="benefit-title">Eco-Friendly</h3>
+                    <p class="benefit-description">
+                        Reduce your carbon footprint and contribute to a cleaner, sustainable environment.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="benefit-title">Energy Independence</h3>
+                    <p class="benefit-description">
+                        Generate your own power and become less dependent on the grid and rising energy costs.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="benefit-title">Increase Home Value</h3>
+                    <p class="benefit-description">
+                        Solar installations can increase your property value by an average of 4-6%.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services section-padding" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Solar Solutions</h2>
+                <p class="section-description">
+                    We provide comprehensive solar installation services for residential, commercial, and industrial
+                    needs.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1762381072961-3bc311dd72b8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+                        alt="Off-Grid">
+                    <div class="service-overlay"></div>
+                    <div class="service-icon-overlay">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Off-Grid Solutions</h3>
+                    <p class="service-description">
+                        Complete off-grid solar systems for remote locations and energy independence.
+                    </p>
+                    <a href="offgrid.html" class="service-link">Learn More →</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1596146624795-c945a2c82e0b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb2xhciUyMGVuZXJneSUyMGZpZWxkJTIwc3Vuc2V0fGVufDF8fHx8MTc3MTkzNjEyOXww&ixlib=rb-4.1.0&q=80&w=1080"
+                        alt="Commercial Solar">
+                    <div class="service-overlay"></div>
+                    <div class="service-icon-overlay">
+                        <i class="fas fa-building"></i>
+                    </div>
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Commercial Solar</h3>
+                    <p class="service-description">
+                        Scalable solar systems for businesses looking to reduce operational costs and meet
+                        sustainability goals.
+                    </p>
+                    <a href="#" class="service-link">Learn More →</a>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1668097613572-40b7c11c8727?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZW5ld2FibGUlMjBlbmVyZ3klMjB0ZWNobm9sb2d5fGVufDF8fHx8MTc3MTkyOTgwMnww&ixlib=rb-4.1.0&q=80&w=1080"
+                        alt="Industrial Solar">
+                    <div class="service-overlay"></div>
+                    <div class="service-icon-overlay">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Industrial Solar</h3>
+                    <p class="service-description">
+                        Large-scale solar installations for industrial facilities with high energy demands.
+                    </p>
+                    <a href="#" class="service-link">Learn More →</a>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1600428235269-c326df6361fe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYXR0ZXJ5JTIwZW5lcmd5JTIwc3RvcmFnZXxlbnwxfHx8fDE3NzE5OTg4NjV8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                        alt="Battery Storage">
+                    <div class="service-overlay"></div>
+                    <div class="service-icon-overlay">
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Battery Storage Solutions</h3>
+                    <p class="service-description">
+                        Store excess solar energy for use during peak hours or power outages with advanced battery
+                        systems.
+                    </p>
+                    <a href="#" class="service-link">Learn More →</a>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1624397640148-949b1732bb0a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb2xhciUyMHBhbmVsJTIwbWFpbnRlbmFuY2UlMjB0ZWNobmljaWFufGVufDF8fHx8MTc3MjAyMTA4NHww&ixlib=rb-4.1.0&q=80&w=1080"
+                        alt="Maintenance">
+                    <div class="service-overlay"></div>
+                    <div class="service-icon-overlay">
+                        <i class="fas fa-wrench"></i>
+                    </div>
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Maintenance & Repair</h3>
+                    <p class="service-description">
+                        Professional maintenance and repair services to keep your solar system running at peak
+                        performance.
+                    </p>
+                    <a href="#" class="service-link">Learn More →</a>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1712903276040-c99b32a057eb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbmVyZ3klMjBjb25zdWx0YW50JTIwYmx1ZXByaW50JTIwcGxhbm5pbmd8ZW58MXx8fHwxNzcyMDIxMDg0fDA&ixlib=rb-4.1.0&q=80&w=1080"
+                        alt="Consultation">
+                    <div class="service-overlay"></div>
+                    <div class="service-icon-overlay">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Energy Consultation</h3>
+                    <p class="service-description">
+                        Expert energy audits and consultations to design the perfect solar solution for your needs.
+                    </p>
+                    <a href="#" class="service-link">Learn More →</a>
+                </div>
+            </div>
+
+
+
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1766853107796-9d79ce6bb5fe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb2xhciUyMG1vbml0b3JpbmclMjBkYXNoYm9hcmQlMjBkaWdpdGFsfGVufDF8fHx8MTc3MjAyMTA4N3ww&ixlib=rb-4.1.0&q=80&w=1080"
+                        alt="Monitoring">
+                    <div class="service-overlay"></div>
+                    <div class="service-icon-overlay">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Solar Monitoring</h3>
+                    <p class="service-description">
+                        Real-time monitoring systems to track your energy production and consumption.
+                    </p>
+                    <a href="#" class="service-link">Learn More →</a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-description">
+                    Getting started with solar energy is simple. Here's our streamlined process.
+                </p>
+            </div>
+
+            <div class="steps-grid">
+                <div class="step-item">
+                    <div class="step-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <div class="step-number">Step 1</div>
+                    <h3 class="step-title">Free Consultation</h3>
+                    <p class="step-description">
+                        We assess your energy needs and design a custom solar solution for your property.
+                    </p>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-icon">
+                        <i class="fas fa-wrench"></i>
+                    </div>
+                    <div class="step-number">Step 2</div>
+                    <h3 class="step-title">Professional Installation</h3>
+                    <p class="step-description">
+                        Our certified technicians install your solar system with precision and care.
+                    </p>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <div class="step-number">Step 3</div>
+                    <h3 class="step-title">Start Generating Power</h3>
+                    <p class="step-description">
+                        Your solar panels begin producing clean energy immediately after installation.
+                    </p>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="step-number">Step 4</div>
+                    <h3 class="step-title">Watch Savings Grow</h3>
+                    <p class="step-description">
+                        Monitor your energy production and enjoy reduced electricity bills every month.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section section-padding">
+        <div class="stats-bg"></div>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title text-white">Making a Real Impact</h2>
+                <p class="section-description text-gray-light">
+                    Our commitment to renewable energy is reflected in the numbers.
+                </p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i class="fas fa-bolt stat-card-icon"></i>
+                    <div class="stat-card-value">500+</div>
+                    <div class="stat-card-label">MW Generated</div>
+                    <div class="stat-card-suffix">of clean energy</div>
+                </div>
+
+                <div class="stat-card">
+                    <i class="fas fa-users stat-card-icon"></i>
+                    <div class="stat-card-value">2000K+</div>
+                    <div class="stat-card-label">Happy Customers</div>
+                    <div class="stat-card-suffix">nationwide</div>
+                </div>
+
+                <div class="stat-card">
+                    <i class="fas fa-award stat-card-icon"></i>
+                    <div class="stat-card-value">30+</div>
+                    <div class="stat-card-label">Industry Awards</div>
+                    <div class="stat-card-suffix">and certifications</div>
+                </div>
+
+                <div class="stat-card">
+                    <i class="fas fa-tree stat-card-icon"></i>
+                    <div class="stat-card-value">200M+</div>
+                    <div class="stat-card-label">Trees Saved</div>
+                    <div class="stat-card-suffix">carbon offset</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials section-padding" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What Our Customers Say</h2>
+                <p class="section-description">
+                    Don't just take our word for it. Hear from satisfied customers who made the switch.
+                </p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Switching to solar was the best decision we made. Our electricity bills have dropped by 65%,
+                        and the installation process was seamless."
+                    </p>
+                    <div class="testimonial-author">Sandip Gadhave</div>
+                    <div class="testimonial-role">Homeowner</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "The commercial solar system has exceeded our expectations. We're saving thousands monthly and
+                        our customers appreciate our commitment to sustainability."
+                    </p>
+                    <div class="testimonial-author">Bhagwan Khatke</div>
+                    <div class="testimonial-role">Business Owner</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Professional team, quality equipment, and outstanding support. They delivered exactly what they
+                        promised, on time and on budget."
+                    </p>
+                    <div class="testimonial-author">Kailas Pund</div>
+                    <div class="testimonial-role">Property Developer</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section section-padding" id="contact">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Switch to Solar?</h2>
+                <p class="cta-description">
+                    Get a free consultation and quote today. Start saving money while saving the planet.
+                </p>
+
+                <div class="cta-buttons">
+                    <button onclick="showForm()" class="btn btn-black">
+                        Get Free Quote
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <a href="https://wa.me/919146049595?text=Hello%20Hariom%20Solar,%20I%20want%20a%20free%20consultation."
+                        target="_blank" class="btn btn-outline-dark">
+                        <i class="fab fa-whatsapp"></i>
+                        Schedule Consultation
+                    </a>
+                </div>
+
+                <div class="cta-contact">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>9146049595</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>hariomirrigation0@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Get Quote Section -->
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="static/logo.png" alt="Hariom Solar Logo" class="custom-logo">
+                        <span>Hariom Solar</span>
+                    </div>
+                    <p class="footer-description">
+                        Hariom Solar 3rd Floor ShubhamKaroti Complex Near Civil Court Nandura Road Khamgaon.
+                    </p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h3 class="footer-heading">Services</h3>
+                    <ul>
+                        <li><a href="#">Residential Solar</a></li>
+                        <li><a href="#">Commercial Solar</a></li>
+                        <li><a href="#">Industrial Solar</a></li>
+                        <li><a href="#">Maintenance & Support</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h3 class="footer-heading">Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Team</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h3 class="footer-heading">Resources</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Solar Calculator</a></li>
+                        <li><a href="#">Financing Options</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Hariom Solar. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="static/script.js"></script>
+</body>
+
+</html>
