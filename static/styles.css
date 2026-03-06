@@ -342,7 +342,7 @@ body {
 
 .service-image {
     position: relative;
-    height: 16rem;
+    height: 20rem;
     overflow: hidden;
 }
 
@@ -1002,17 +1002,49 @@ html {
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     margin-top: 40px;
 }
 
 .gallery-grid img {
     width: 100%;
-    border-radius: 12px;
-    transition: transform 0.3s ease;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: 0.4s;
 }
 
 .gallery-grid img:hover {
     transform: scale(1.05);
+}
+
+@media (max-width:1024px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width:600px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.gallery-item {
+    text-align: center;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.gallery-desc {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
 }
