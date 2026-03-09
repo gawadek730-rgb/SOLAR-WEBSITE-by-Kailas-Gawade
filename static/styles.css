@@ -45,11 +45,11 @@ body {
 }
 
 .nav-brand {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 1.8rem;
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: 38px;
     font-weight: 700;
+    color: #eab308;
+    letter-spacing: 1px;
 }
 
 .nav-brand i {
@@ -363,6 +363,14 @@ body {
     background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
 }
 
+.service-overlay {
+    pointer-events: none;
+}
+
+.service-icon-overlay {
+    pointer-events: none;
+}
+
 .service-icon-overlay {
     position: absolute;
     bottom: 1.5rem;
@@ -622,6 +630,7 @@ body {
 }
 
 .footer-logo {
+    font-family: 'Poppins', sans-serif;
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -629,11 +638,6 @@ body {
     font-weight: 700;
     color: white;
     margin-bottom: 1rem;
-}
-
-.footer-logo i {
-    font-size: 2rem;
-    color: #eab308;
 }
 
 .footer-description {
@@ -1047,4 +1051,141 @@ html {
     margin-top: 10px;
     font-size: 14px;
     color: #555;
+}
+
+.calculator-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator-box {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 90%;
+    position: relative;
+}
+
+.calculator-box input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.service-card {
+    cursor: pointer;
+}
+
+/* Careers Page */
+
+.career-hero {
+    background: linear-gradient(135deg, #eab308, #f59e0b);
+    color: #000;
+    text-align: center;
+    padding: 120px 20px 80px;
+}
+
+.career-hero h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.career-hero p {
+    font-size: 18px;
+    max-width: 600px;
+    margin: auto;
+}
+
+.career-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.career-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: 0.3s;
+}
+
+.career-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.career-card i {
+    font-size: 40px;
+    color: #eab308;
+    margin-bottom: 15px;
+}
+
+.career-card h3 {
+    margin-bottom: 10px;
+}
+
+.career-card p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Career Form Popup */
+
+.career-form-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.career-form-container {
+    background: white;
+    padding: 30px;
+    width: 400px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.career-form-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    cursor: pointer;
 }

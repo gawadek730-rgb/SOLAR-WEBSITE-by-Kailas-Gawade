@@ -30,6 +30,41 @@ function closeForm() {
 }
 
 
+function openCalculator() {
+
+    document.getElementById("calculatorPopup").style.display = "flex";
+
+}
+
+function closeCalculator() {
+
+    document.getElementById("calculatorPopup").style.display = "none";
+
+}
+
+function solarCalc() {
+
+    let bill = document.getElementById("bill").value;
+    let rate = document.getElementById("rate").value;
+
+    let units = bill / rate;
+
+    let system = units / 120;
+
+    let cost = system * 55000;
+
+    document.getElementById("result").innerHTML = `
+
+<p><b>Monthly Units:</b> ${units.toFixed(0)}</p>
+
+<p><b>Recommended System:</b> ${system.toFixed(2)} kW</p>
+
+<p><b>Estimated Cost:</b> ₹${cost.toFixed(0)}</p>
+
+`;
+
+}
+
 // ===============================
 // GOOGLE SHEET FORM SUBMISSION
 // ===============================
@@ -83,3 +118,17 @@ document.getElementById("floatingQuoteForm").addEventListener("submit", function
         });
 
 });
+
+function openCareerForm(position) {
+
+    document.getElementById("careerForm").style.display = "flex";
+
+    document.getElementById("jobPosition").value = position;
+
+}
+
+function closeCareerForm() {
+
+    document.getElementById("careerForm").style.display = "none";
+
+}
