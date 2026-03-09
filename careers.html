@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Careers | Hariom Solar</title>
+
+    <link rel="stylesheet" href="static/styles.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+
+        <div class="container nav-container">
+
+            <div class="nav-brand">
+                <img src="static/logo.png" alt="Hariom Solar Logo" class="custom-logo">
+                <span class="brand-name">Hariom Solar</span>
+            </div>
+
+            <div class="nav-menu" id="navMenu">
+
+                <a href="index.html#home" class="nav-link">Home</a>
+                <a href="index.html#services" class="nav-link">Services</a>
+                <a href="index.html#about" class="nav-link">About</a>
+                <a href="index.html#testimonials" class="nav-link">Testimonials</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+
+                <button onclick="showForm()" class="btn btn-primary">
+                    Get Quote
+                </button>
+
+            </div>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars" id="menuIcon"></i>
+            </button>
+
+        </div>
+
+    </nav>
+
+    <!-- CAREER HERO -->
+    <section class="hero" style="min-height:80vh">
+
+        <div class="hero-bg">
+            <img src="static/images/team.jpeg" alt="Career Solar">
+            <div class="hero-overlay"></div>
+        </div>
+
+        <div class="container hero-content">
+
+            <h1 class="hero-title">
+                Join <span class="text-yellow">Hariom Solar</span> Team
+            </h1>
+
+            <p class="hero-description">
+                Build your career in the renewable energy industry and help create a sustainable future with us.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- CAREER SECTION -->
+
+    <section class="services section-padding">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <h2 class="section-title">Open Positions</h2>
+
+                <p class="section-description">
+                    Explore exciting career opportunities with our solar energy team.
+                </p>
+
+            </div>
+
+
+            <div class="services-grid">
+
+
+                <div class="service-card">
+
+                    <div class="service-content">
+
+                        <h3 class="service-title">
+                            <i class="fas fa-solar-panel"></i>
+                            Solar Installation Engineer
+                        </h3>
+
+                        <p class="service-description">
+                            Install rooftop solar panels and maintain solar energy systems.
+                        </p>
+
+                        <button class="btn btn-yellow" onclick="openCareerForm('Solar Installation Engineer')">Apply
+                            Now</button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="service-card">
+
+                    <div class="service-content">
+
+                        <h3 class="service-title">
+                            <i class="fas fa-chart-line"></i>
+                            Sales Executive
+                        </h3>
+
+                        <p class="service-description">
+                            Promote solar solutions and manage customer relationships.
+                        </p>
+
+                        <button class="btn btn-yellow" onclick="openCareerForm('Sales Executive')">Apply Now</button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="service-card">
+
+                    <div class="service-content">
+
+                        <h3 class="service-title">
+                            <i class="fas fa-tools"></i>
+                            Site Technician
+                        </h3>
+
+                        <p class="service-description">
+                            Assist with solar installation and system maintenance.
+                        </p>
+
+                        <button class="btn btn-yellow" onclick="openCareerForm('Site Technician')">Apply Now</button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="service-card">
+
+                    <div class="service-content">
+
+                        <h3 class="service-title">
+                            <i class="fas fa-user-cog"></i>
+                            Project Manager
+                        </h3>
+
+                        <p class="service-description">
+                            Manage solar projects and coordinate with installation teams.
+                        </p>
+
+                        <button class="btn btn-yellow" onclick="openCareerForm('Project Manager')">Apply Now</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    </section>
+
+
+    <!-- CAREER APPLICATION FORM -->
+
+    <div id="careerForm" class="career-form-popup">
+
+        <div class="career-form-container">
+
+            <span class="close-btn" onclick="closeCareerForm()">&times;</span>
+
+            <h2>Join Our Team</h2>
+
+            <form>
+
+                <input type="text" placeholder="Full Name" required>
+
+                <input type="email" placeholder="Email Address" required>
+
+                <input type="tel" placeholder="Phone Number" required>
+
+                <input type="text" id="jobPosition" placeholder="Position" readonly>
+
+                <label>Upload Resume</label>
+                <input type="file" required>
+
+                <button type="submit" class="btn btn-primary">
+                    Submit Application
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <footer class="footer">
+
+
+        <!-- FOOTER -->
+
+        <footer class="footer">
+
+            <div class="container">
+
+                <div class="footer-grid">
+
+                    <div class="footer-brand">
+
+                        <div class="footer-logo">
+                            <img src="static/logo.png" alt="Hariom Solar Logo" class="custom-logo">
+                            <span>Hariom Solar</span>
+                        </div>
+
+                        <p class="footer-description">
+                            Hariom Solar 3rd Floor ShubhamKaroti Complex Near Civil Court
+                            Nandura Road Khamgaon.
+                        </p>
+
+                        <div class="social-links">
+
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="footer-links">
+
+                        <h3 class="footer-heading">Company</h3>
+
+                        <ul>
+                            <li><a href="index.html#about">About Us</a></li>
+                            <li><a href="careers.html">Careers</a></li>
+                            <li><a href="#">Our Team</a></li>
+                            <li><a href="#">Blog</a></li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="footer-links">
+
+                        <h3 class="footer-heading">Resources</h3>
+
+                        <ul>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#" onclick="openCalculator()">Solar Calculator</a></li>
+                            <li><a href="#">Financing</a></li>
+                            <li><a href="index.html#contact">Contact</a></li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+
+                <div class="footer-bottom">
+
+                    <p>
+                        © 2026 Hariom Solar. All rights reserved.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </footer>
+
+
+        <script src="static/script.js"></script>
+
+</body>
+
+</html>

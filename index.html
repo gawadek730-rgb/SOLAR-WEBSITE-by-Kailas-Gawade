@@ -9,6 +9,33 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
+<!-- Solar Calculator Popup -->
+<div class="calculator-popup" id="calculatorPopup">
+
+    <div class="calculator-box">
+
+        <span class="close-btn" onclick="closeCalculator()">×</span>
+
+        <h2>Solar Savings Calculator</h2>
+
+        <label>Monthly Electricity Bill (₹)</label>
+        <input type="number" id="bill" placeholder="Example: 3000">
+
+        <label>Electricity Rate (₹/unit)</label>
+        <input type="number" id="rate" value="8">
+
+        <label>Rooftop Size (sq ft)</label>
+        <input type="number" id="roof" placeholder="Example: 800">
+
+        <button class="btn btn-yellow" onclick="solarCalc()">
+            Calculate
+        </button>
+
+        <div id="result"></div>
+
+    </div>
+</div>
+
 <body>
 
     <!-- Global Floating Quote Popup -->
@@ -72,49 +99,41 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-bg">
-            <img src="https://images.unsplash.com/photo-1635424709961-f3a150459ad4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb2xhciUyMHBhbmVscyUyMHJvb2Z0b3AlMjBpbnN0YWxsYXRpb258ZW58MXx8fHwxNzcxODg2MDg0fDA&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Solar panels">
+            <img src="static/solar.jpeg" alt="Solar panels">
             <div class="hero-overlay"></div>
         </div>
-
         <div class="container hero-content">
-            <div class="hero-text">
-                <div class="hero-badge">
-                    <i class="fas fa-sun"></i>
-                    <span>Clean Energy Solutions</span>
+
+            <h1 class="hero-title">
+                Power Your Future with <span class="text-yellow">Hariom Solar</span>
+            </h1>
+
+            <p class="hero-description">
+                Join thousands of homeowners who are saving money and protecting the planet with clean, renewable
+                Hariom Solar solutions.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button onclick="showForm()" class="btn btn-yellow">
+                    Get Free Quote
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="btn btn-outline">Learn More</button>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-value">25+</div>
+                    <div class="stat-label">Years Warranty</div>
                 </div>
-
-                <h1 class="hero-title">
-                    Power Your Future with <span class="text-yellow">Hariom Solar</span>
-                </h1>
-
-                <p class="hero-description">
-                    Join thousands of homeowners who are saving money and protecting the planet with clean, renewable
-                    Hariom Solar solutions.
-                </p>
-
-                <div class="hero-buttons">
-
-                    <button onclick="showForm()" class="btn btn-yellow">
-                        Get Free Quote
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                    <button class="btn btn-outline">Learn More</button>
+                <div class="stat-item">
+                    <div class="stat-value">2K+</div>
+                    <div class="stat-label">Installations</div>
                 </div>
-
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <div class="stat-value">25+</div>
-                        <div class="stat-label">Years Warranty</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">2K+</div>
-                        <div class="stat-label">Installations</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">99.99%</div>
-                        <div class="stat-label">Satisfaction</div>
-                    </div>
+                <div class="stat-item">
+                    <div class="stat-value">99.99%</div>
+                    <div class="stat-label">Satisfaction</div>
                 </div>
             </div>
         </div>
@@ -124,6 +143,7 @@
     <section class="benefits section-padding" id="about">
         <div class="container">
             <div class="section-header">
+                <br><br>
                 <h2 class="section-title">Why Choose Hariom Solar?</h2>
                 <p class="section-description">
                     Discover the benefits of switching to clean, renewable solar power for your home or business.
@@ -178,13 +198,15 @@
     <section class="services section-padding" id="services">
         <div class="container">
             <div class="section-header">
+                <br>
                 <h2 class="section-title">Our Solar Solutions</h2>
                 <p class="section-description">
                     We provide comprehensive solar installation services for residential, commercial, and industrial
                     needs.
                 </p>
             </div>
-            <div class="service-card">
+            <div class="service-card" onclick="window.location.href='offgrid.html'">
+
                 <div class="service-image">
                     <img src="static/images/offgrid.jpeg" alt="Off Grid Solar System">
 
@@ -194,127 +216,131 @@
                         <i class="fas fa-sun"></i>
                     </div>
                 </div>
+
+                <div class="service-content">
+
+                    <h3 class="service-title">Off-Grid Solutions</h3>
+
+                    <p class="service-description">
+                        Complete off-grid solar systems for remote locations and energy independence.
+                    </p>
+
+                    <a href="offgrid.html" class="service-link">Learn More →</a>
+
+                </div>
+
             </div>
-            <div class="service-content">
-                <h3 class="service-title">Off-Grid Solutions</h3>
-                <p class="service-description">
-                    Complete off-grid solar systems for remote locations and energy independence.
-                </p>
-                <a href="offgrid.html" class="service-link">Learn More →</a>
-            </div>
-        </div>
-        <div class="service-card">
-            <div class="service-image">
-                <img src="https://images.unsplash.com/photo-1596146624795-c945a2c82e0b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb2xhciUyMGVuZXJneSUyMGZpZWxkJTIwc3Vuc2V0fGVufDF8fHx8MTc3MTkzNjEyOXww&ixlib=rb-4.1.0&q=80&w=1080"
-                    alt="Commercial Solar">
-                <div class="service-overlay"></div>
-                <div class="service-icon-overlay">
-                    <i class="fas fa-building"></i>
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1596146624795-c945a2c82e0b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb2xhciUyMGVuZXJneSUyMGZpZWxkJTIwc3Vuc2V0fGVufDF8fHx8MTc3MTkzNjEyOXww&ixlib=rb-4.1.0&q=80&w=1080"
+                        alt="Commercial Solar">
+                    <div class="service-overlay"></div>
+                    <div class="service-icon-overlay">
+                        <i class="fas fa-building"></i>
+                    </div>
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Commercial Solar</h3>
+                    <p class="service-description">
+                        Scalable solar systems for businesses looking to reduce operational costs and meet
+                        sustainability goals.
+                    </p>
+                    <a href="#" class="service-link">Learn More →</a>
                 </div>
             </div>
-            <div class="service-content">
-                <h3 class="service-title">Commercial Solar</h3>
-                <p class="service-description">
-                    Scalable solar systems for businesses looking to reduce operational costs and meet
-                    sustainability goals.
-                </p>
-                <a href="#" class="service-link">Learn More →</a>
-            </div>
-        </div>
 
-        <div class="service-card">
-            <div class="service-image">
-                <img src="https://images.unsplash.com/photo-1668097613572-40b7c11c8727?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZW5ld2FibGUlMjBlbmVyZ3klMjB0ZWNobm9sb2d5fGVufDF8fHx8MTc3MTkyOTgwMnww&ixlib=rb-4.1.0&q=80&w=1080"
-                    alt="Industrial Solar">
-                <div class="service-overlay"></div>
-                <div class="service-icon-overlay">
-                    <i class="fas fa-industry"></i>
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="static/residentialsolar.jpeg" alt="Residential Solar">
+                    <div class="service-overlay"></div>
+                    <div class="service-icon-overlay">
+                        <i class="fas fa-home"></i>
+                    </div>
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Residential Solar</h3>
+                    <p class="service-description">
+                        Tailored solar solutions for homes, reducing electricity bills and carbon footprint.
+                    </p>
+                    <a href="#" class="service-link">Learn More →</a>
                 </div>
             </div>
-            <div class="service-content">
-                <h3 class="service-title">Industrial Solar</h3>
-                <p class="service-description">
-                    Large-scale solar installations for industrial facilities with high energy demands.
-                </p>
-                <a href="#" class="service-link">Learn More →</a>
-            </div>
-        </div>
 
-        <div class="service-card">
-            <div class="service-image">
-                <img src="https://images.unsplash.com/photo-1600428235269-c326df6361fe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYXR0ZXJ5JTIwZW5lcmd5JTIwc3RvcmFnZXxlbnwxfHx8fDE3NzE5OTg4NjV8MA&ixlib=rb-4.1.0&q=80&w=1080"
-                    alt="Battery Storage">
-                <div class="service-overlay"></div>
-                <div class="service-icon-overlay">
-                    <i class="fas fa-battery-full"></i>
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1600428235269-c326df6361fe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYXR0ZXJ5JTIwZW5lcmd5JTIwc3RvcmFnZXxlbnwxfHx8fDE3NzE5OTg4NjV8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                        alt="Battery Storage">
+                    <div class="service-overlay"></div>
+                    <div class="service-icon-overlay">
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Battery Storage Solutions</h3>
+                    <p class="service-description">
+                        Store excess solar energy for use during peak hours or power outages with advanced battery
+                        systems.
+                    </p>
+                    <a href="#" class="service-link">Learn More →</a>
                 </div>
             </div>
-            <div class="service-content">
-                <h3 class="service-title">Battery Storage Solutions</h3>
-                <p class="service-description">
-                    Store excess solar energy for use during peak hours or power outages with advanced battery
-                    systems.
-                </p>
-                <a href="#" class="service-link">Learn More →</a>
-            </div>
-        </div>
 
-        <div class="service-card">
-            <div class="service-image">
-                <img src="https://images.unsplash.com/photo-1624397640148-949b1732bb0a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb2xhciUyMHBhbmVsJTIwbWFpbnRlbmFuY2UlMjB0ZWNobmljaWFufGVufDF8fHx8MTc3MjAyMTA4NHww&ixlib=rb-4.1.0&q=80&w=1080"
-                    alt="Maintenance">
-                <div class="service-overlay"></div>
-                <div class="service-icon-overlay">
-                    <i class="fas fa-wrench"></i>
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1624397640148-949b1732bb0a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb2xhciUyMHBhbmVsJTIwbWFpbnRlbmFuY2UlMjB0ZWNobmljaWFufGVufDF8fHx8MTc3MjAyMTA4NHww&ixlib=rb-4.1.0&q=80&w=1080"
+                        alt="Maintenance">
+                    <div class="service-overlay"></div>
+                    <div class="service-icon-overlay">
+                        <i class="fas fa-wrench"></i>
+                    </div>
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Maintenance & Repair</h3>
+                    <p class="service-description">
+                        Professional maintenance and repair services to keep your solar system running at peak
+                        performance.
+                    </p>
+                    <a href="#" class="service-link">Learn More →</a>
                 </div>
             </div>
-            <div class="service-content">
-                <h3 class="service-title">Maintenance & Repair</h3>
-                <p class="service-description">
-                    Professional maintenance and repair services to keep your solar system running at peak
-                    performance.
-                </p>
-                <a href="#" class="service-link">Learn More →</a>
-            </div>
-        </div>
 
-        <div class="service-card">
-            <div class="service-image">
-                <img src="https://images.unsplash.com/photo-1712903276040-c99b32a057eb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbmVyZ3klMjBjb25zdWx0YW50JTIwYmx1ZXByaW50JTIwcGxhbm5pbmd8ZW58MXx8fHwxNzcyMDIxMDg0fDA&ixlib=rb-4.1.0&q=80&w=1080"
-                    alt="Consultation">
-                <div class="service-overlay"></div>
-                <div class="service-icon-overlay">
-                    <i class="fas fa-clipboard-check"></i>
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1712903276040-c99b32a057eb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbmVyZ3klMjBjb25zdWx0YW50JTIwYmx1ZXByaW50JTIwcGxhbm5pbmd8ZW58MXx8fHwxNzcyMDIxMDg0fDA&ixlib=rb-4.1.0&q=80&w=1080"
+                        alt="Consultation">
+                    <div class="service-overlay"></div>
+                    <div class="service-icon-overlay">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Energy Consultation</h3>
+                    <p class="service-description">
+                        Expert energy audits and consultations to design the perfect solar solution for your needs.
+                    </p>
+                    <a href="#" class="service-link">Learn More →</a>
                 </div>
             </div>
-            <div class="service-content">
-                <h3 class="service-title">Energy Consultation</h3>
-                <p class="service-description">
-                    Expert energy audits and consultations to design the perfect solar solution for your needs.
-                </p>
-                <a href="#" class="service-link">Learn More →</a>
-            </div>
-        </div>
 
 
 
-        <div class="service-card">
-            <div class="service-image">
-                <img src="https://images.unsplash.com/photo-1766853107796-9d79ce6bb5fe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb2xhciUyMG1vbml0b3JpbmclMjBkYXNoYm9hcmQlMjBkaWdpdGFsfGVufDF8fHx8MTc3MjAyMTA4N3ww&ixlib=rb-4.1.0&q=80&w=1080"
-                    alt="Monitoring">
-                <div class="service-overlay"></div>
-                <div class="service-icon-overlay">
-                    <i class="fas fa-wifi"></i>
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1766853107796-9d79ce6bb5fe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb2xhciUyMG1vbml0b3JpbmclMjBkYXNoYm9hcmQlMjBkaWdpdGFsfGVufDF8fHx8MTc3MjAyMTA4N3ww&ixlib=rb-4.1.0&q=80&w=1080"
+                        alt="Monitoring">
+                    <div class="service-overlay"></div>
+                    <div class="service-icon-overlay">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Solar Monitoring</h3>
+                    <p class="service-description">
+                        Real-time monitoring systems to track your energy production and consumption.
+                    </p>
+                    <a href="#" class="service-link">Learn More →</a>
                 </div>
             </div>
-            <div class="service-content">
-                <h3 class="service-title">Solar Monitoring</h3>
-                <p class="service-description">
-                    Real-time monitoring systems to track your energy production and consumption.
-                </p>
-                <a href="#" class="service-link">Learn More →</a>
-            </div>
-        </div>
         </div>
         </div>
     </section>
@@ -424,6 +450,8 @@
     <section class="testimonials section-padding" id="testimonials">
         <div class="container">
             <div class="section-header">
+                <br><br>
+
                 <h2 class="section-title">What Our Customers Say</h2>
                 <p class="section-description">
                     Don't just take our word for it. Hear from satisfied customers who made the switch.
@@ -485,6 +513,7 @@
     <!-- CTA Section -->
     <section class="cta-section section-padding" id="contact">
         <div class="container">
+            <br><br>
             <div class="cta-content">
                 <h2 class="cta-title">Ready to Switch to Solar?</h2>
                 <p class="cta-description">
@@ -543,7 +572,7 @@
                     <ul>
                         <li><a href="#">Residential Solar</a></li>
                         <li><a href="#">Commercial Solar</a></li>
-                        <li><a href="#">Industrial Solar</a></li>
+                        <li><a href="#">Off Grid Solar</a></li>
                         <li><a href="#">Maintenance & Support</a></li>
                     </ul>
                 </div>
@@ -553,7 +582,7 @@
                     <ul>
                         <li><a href="#">About Us</a></li>
                         <li><a href="#">Our Team</a></li>
-                        <li><a href="#">Careers</a></li>
+                        <li><a href="careers.html">Careers</a></li>
                         <li><a href="#">Blog</a></li>
                     </ul>
                 </div>
@@ -562,7 +591,9 @@
                     <h3 class="footer-heading">Resources</h3>
                     <ul>
                         <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Solar Calculator</a></li>
+                        <li>
+                            <a href="#" onclick="openCalculator()">Solar Calculator</a>
+                        </li>
                         <li><a href="#">Financing Options</a></li>
                         <li><a href="#">Contact Us</a></li>
                     </ul>
