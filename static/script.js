@@ -5,130 +5,274 @@ const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const navMenu = document.getElementById('navMenu');
 const menuIcon = document.getElementById('menuIcon');
 
-mobileMenuBtn.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
+if (mobileMenuBtn && navMenu && menuIcon) {
 
-    if (navMenu.classList.contains('active')) {
-        menuIcon.classList.remove('fa-bars');
-        menuIcon.classList.add('fa-times');
-    } else {
-        menuIcon.classList.remove('fa-times');
-        menuIcon.classList.add('fa-bars');
-    }
-});
+    mobileMenuBtn.addEventListener('click', () => {
+
+        navMenu.classList.toggle('active');
+
+        if (navMenu.classList.contains('active')) {
+            menuIcon.classList.replace('fa-bars', 'fa-times');
+        } else {
+            menuIcon.classList.replace('fa-times', 'fa-bars');
+        }
+
+    });
+
+}
 
 
 // ===============================
-// POPUP OPEN & CLOSE
+// QUOTE POPUP OPEN & CLOSE
 // ===============================
 function showForm() {
-    document.getElementById("quotePopup").style.display = "flex";
+    const popup = document.getElementById("quotePopup");
+    if (popup) popup.style.display = "flex";
 }
 
 function closeForm() {
-    document.getElementById("quotePopup").style.display = "none";
+    const popup = document.getElementById("quotePopup");
+    if (popup) popup.style.display = "none";
 }
 
 
+// ===============================
+// SOLAR CALCULATOR POPUP
+// ===============================
 function openCalculator() {
-
-    document.getElementById("calculatorPopup").style.display = "flex";
-
+    const calc = document.getElementById("calculatorPopup");
+    if (calc) calc.style.display = "flex";
 }
 
 function closeCalculator() {
-
-    document.getElementById("calculatorPopup").style.display = "none";
-
+    const calc = document.getElementById("calculatorPopup");
+    if (calc) calc.style.display = "none";
 }
 
+
+// ===============================
+// SOLAR CALCULATOR LOGIC
+// ===============================
 function solarCalc() {
 
-    let bill = document.getElementById("bill").value;
-    let rate = document.getElementById("rate").value;
+    const billInput = document.getElementById("bill");
+    const rateInput = document.getElementById("rate");
+    const result = document.getElementById("result");
 
-    let units = bill / rate;
+    if (!billInput || !rateInput || !result) return;
 
-    let system = units / 120;
+    const bill = parseFloat(billInput.value);
+    const rate = parseFloat(rateInput.value);
 
-    let cost = system * 55000;
+    if (!bill || !rate || rate === 0) {
+        result.innerHTML = "<p>Please enter valid values.</p>";
+        return;
+    }
 
-    document.getElementById("result").innerHTML = `
+    const units = bill / rate;
+    const system = units / 120;
+    const cost = system * 55000;
 
-<p><b>Monthly Units:</b> ${units.toFixed(0)}</p>
-
-<p><b>Recommended System:</b> ${system.toFixed(2)} kW</p>
-
-<p><b>Estimated Cost:</b> ₹${cost.toFixed(0)}</p>
-
-`;
-
+    result.innerHTML = `
+        <p><b>Monthly Units:</b> ${units.toFixed(0)}</p>
+        <p><b>Recommended System:</b> ${system.toFixed(2)} kW</p>
+        <p><b>Estimated Cost:</b> ₹${cost.toFixed(0)}</p>
+    `;
 }
+
 
 // ===============================
 // GOOGLE SHEET FORM SUBMISSION
 // ===============================
-document.getElementById("floatingQuoteForm").addEventListener("submit", function (e) {
-    e.preventDefault();
+const quoteForm = document.getElementById("floatingQuoteForm");
 
-    const message = document.getElementById("formMessage");
+if (quoteForm) {
 
-    // Show loading message immediately
-    message.innerHTML = "⏳ Submitting...";
-    message.style.color = "orange";
-    message.style.display = "block";
+    quoteForm.addEventListener("submit", async function (e) {
 
-    const data = {
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        phone: document.getElementById("phone").value,
-        city: document.getElementById("city").value,
-        solarType: document.getElementById("solarType").value
-    };
+        e.preventDefault();
 
-    fetch("https://script.google.com/macros/s/AKfycbwwt05dxW0CGERIIBxpAW4Sgg6-MBfPbWLExOfiO8k9615jJSKxXnVJ8DVfiYdmFc1L/exec", {
-        method: "POST",
-        body: JSON.stringify(data)
-    })
-        .then(res => res.json())
-        .then(response => {
+        const message = document.getElementById("formMessage");
+
+        message.innerHTML = "⏳ Submitting...";
+        message.style.color = "orange";
+        message.style.display = "block";
+
+        const data = {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            phone: document.getElementById("phone").value,
+            city: document.getElementById("city").value,
+            solarType: document.getElementById("solarType").value
+        };
+
+        try {
+
+            const res = await fetch("https://script.google.com/macros/s/AKfycbwwt05dxW0CGERIIBxpAW4Sgg6-MBfPbWLExOfiO8k9615jJSKxXnVJ8DVfiYdmFc1L/exec", {
+                method: "POST",
+                body: JSON.stringify(data)
+            });
+
+            const response = await res.json();
 
             if (response.result === "success") {
 
                 message.innerHTML = "✅ Form Submitted Successfully!";
                 message.style.color = "green";
 
-                document.getElementById("floatingQuoteForm").reset();
+                quoteForm.reset();
 
                 setTimeout(() => {
                     closeForm();
                     message.style.display = "none";
-                }, 2000);
+                }, 4000);
 
             } else {
+
                 message.innerHTML = "❌ Submission Failed!";
                 message.style.color = "red";
+
             }
 
-        })
-        .catch(error => {
+        } catch (error) {
+
             message.innerHTML = "❌ Error submitting form!";
             message.style.color = "red";
             console.error(error);
-        });
 
-});
+        }
 
+    });
+
+}
+
+
+// ===============================
+// CAREER POPUP
+// ===============================
 function openCareerForm(position) {
 
-    document.getElementById("careerForm").style.display = "flex";
+    const popup = document.getElementById("careerForm");
+    const jobField = document.getElementById("jobPosition");
 
-    document.getElementById("jobPosition").value = position;
+    if (popup) popup.style.display = "flex";
+    if (jobField) jobField.value = position;
 
 }
 
 function closeCareerForm() {
 
-    document.getElementById("careerForm").style.display = "none";
+    const popup = document.getElementById("careerForm");
+    if (popup) popup.style.display = "none";
+
+}
+
+
+// ===============================
+// CLOSE POPUP WHEN CLICK OUTSIDE
+// ===============================
+window.onclick = function (event) {
+
+    const quotePopup = document.getElementById("quotePopup");
+    const careerPopup = document.getElementById("careerForm");
+    const calcPopup = document.getElementById("calculatorPopup");
+
+    if (event.target === quotePopup) quotePopup.style.display = "none";
+    if (event.target === careerPopup) careerPopup.style.display = "none";
+    if (event.target === calcPopup) calcPopup.style.display = "none";
+
+};
+
+
+// ===============================
+// CAREER FORM SUBMIT (WITH RESUME)
+// ===============================
+const careerApplyForm = document.getElementById("careerApplyForm");
+
+if (careerApplyForm) {
+
+    careerApplyForm.addEventListener("submit", async function (e) {
+
+        e.preventDefault();
+
+        const message = document.getElementById("careerMessage");
+        const submitBtn = careerApplyForm.querySelector("button");
+
+        if (message) {
+            message.innerHTML = "⏳ Uploading Application...";
+            message.style.color = "orange";
+            message.style.display = "block";
+        }
+
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Submitting...";
+        }
+
+        const formData = new FormData(careerApplyForm);
+
+        try {
+
+            const response = await fetch("http://127.0.0.1:5000/apply", {
+                method: "POST",
+                body: formData
+            });
+
+            const result = await response.json();
+
+            if (result.status === "success") {
+
+                if (message) {
+                    alert("✅ Application Submitted Successfully!");
+                    message.innerHTML = "✅ Application Submitted Successfully!";
+                    message.style.color = "green";
+                }
+
+                careerApplyForm.reset();
+
+                setTimeout(() => {
+
+                    closeCareerForm();
+
+                    if (message) message.style.display = "none";
+
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.innerText = "Submit Application";
+                    }
+
+                }, 4000);
+
+            } else {
+
+                if (message) {
+                    message.innerHTML = "❌ Submission Failed!";
+                    message.style.color = "red";
+                }
+
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = "Submit Application";
+                }
+
+            }
+
+        } catch (error) {
+
+            if (message) {
+                message.innerHTML = "❌ Server Error!";
+                message.style.color = "red";
+            }
+
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Submit Application";
+            }
+
+            console.error(error);
+
+        }
+
+    });
 
 }

@@ -1189,3 +1189,72 @@ html {
     font-size: 28px;
     cursor: pointer;
 }
+
+/* ================= ADMIN PANEL ================= */
+
+.admin-box {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Table */
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.admin-table thead {
+    background: #f5f5f5;
+}
+
+.admin-table th {
+    padding: 14px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.admin-table td {
+    padding: 14px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Resume link */
+
+.admin-table a {
+    color: #eab308;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.admin-table a:hover {
+    text-decoration: underline;
+}
+
+/* Delete button */
+
+.admin-table .btn {
+    padding: 8px 14px;
+    font-size: 14px;
+}
+
+/* Hover effect */
+
+.admin-table tbody tr:hover {
+    background: #fafafa;
+}
+
+/* Mobile */
+
+@media(max-width:768px) {
+
+    .admin-table th,
+    .admin-table td {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+}
