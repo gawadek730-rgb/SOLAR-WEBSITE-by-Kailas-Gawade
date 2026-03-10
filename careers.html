@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -16,6 +17,7 @@
 <body>
 
     <!-- NAVBAR -->
+
     <nav class="navbar" id="navbar">
 
         <div class="container nav-container">
@@ -47,7 +49,9 @@
 
     </nav>
 
-    <!-- CAREER HERO -->
+
+    <!-- HERO SECTION -->
+
     <section class="hero" style="min-height:80vh">
 
         <div class="hero-bg">
@@ -69,6 +73,7 @@
 
     </section>
 
+
     <!-- CAREER SECTION -->
 
     <section class="services section-padding">
@@ -89,6 +94,8 @@
             <div class="services-grid">
 
 
+                <!-- JOB 1 -->
+
                 <div class="service-card">
 
                     <div class="service-content">
@@ -102,13 +109,16 @@
                             Install rooftop solar panels and maintain solar energy systems.
                         </p>
 
-                        <button class="btn btn-yellow" onclick="openCareerForm('Solar Installation Engineer')">Apply
-                            Now</button>
+                        <button class="btn btn-yellow" onclick="openCareerForm('Solar Installation Engineer')">
+                            Apply Now
+                        </button>
 
                     </div>
 
                 </div>
 
+
+                <!-- JOB 2 -->
 
                 <div class="service-card">
 
@@ -123,12 +133,16 @@
                             Promote solar solutions and manage customer relationships.
                         </p>
 
-                        <button class="btn btn-yellow" onclick="openCareerForm('Sales Executive')">Apply Now</button>
+                        <button class="btn btn-yellow" onclick="openCareerForm('Sales Executive')">
+                            Apply Now
+                        </button>
 
                     </div>
 
                 </div>
 
+
+                <!-- JOB 3 -->
 
                 <div class="service-card">
 
@@ -143,12 +157,16 @@
                             Assist with solar installation and system maintenance.
                         </p>
 
-                        <button class="btn btn-yellow" onclick="openCareerForm('Site Technician')">Apply Now</button>
+                        <button class="btn btn-yellow" onclick="openCareerForm('Site Technician')">
+                            Apply Now
+                        </button>
 
                     </div>
 
                 </div>
 
+
+                <!-- JOB 4 -->
 
                 <div class="service-card">
 
@@ -163,21 +181,26 @@
                             Manage solar projects and coordinate with installation teams.
                         </p>
 
-                        <button class="btn btn-yellow" onclick="openCareerForm('Project Manager')">Apply Now</button>
+                        <button class="btn btn-yellow" onclick="openCareerForm('Project Manager')">
+                            Apply Now
+                        </button>
 
                     </div>
 
                 </div>
+
 
             </div>
 
         </div>
 
     </section>
-    </section>
 
 
-    <!-- CAREER APPLICATION FORM -->
+
+    <!-- APPLICATION FORM POPUP -->
+
+    <!-- APPLICATION FORM POPUP -->
 
     <div id="careerForm" class="career-form-popup">
 
@@ -187,18 +210,27 @@
 
             <h2>Join Our Team</h2>
 
-            <form>
+            <form id="careerApplyForm" action="/apply" method="POST" enctype="multipart/form-data">
 
-                <input type="text" placeholder="Full Name" required>
+                <input type="text" name="name" placeholder="Full Name" required>
 
-                <input type="email" placeholder="Email Address" required>
+                <input type="email" name="email" placeholder="Email Address" required>
 
-                <input type="tel" placeholder="Phone Number" required>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
 
-                <input type="text" id="jobPosition" placeholder="Position" readonly>
+                <input type="text" name="position" id="jobPosition" readonly>
 
                 <label>Upload Resume</label>
-                <input type="file" required>
+
+                <input type="file" name="resume" accept=".pdf,.doc,.docx" required>
+
+                <!-- STATUS MESSAGE -->
+                <div id="careerMessage" style="
+        display:none;
+        margin:10px 0;
+        font-weight:600;
+        text-align:center;
+    "></div>
 
                 <button type="submit" class="btn btn-primary">
                     Submit Application
@@ -209,87 +241,82 @@
         </div>
 
     </div>
-
+    <!-- FOOTER -->
 
     <footer class="footer">
 
+        <div class="container">
 
-        <!-- FOOTER -->
+            <div class="footer-grid">
 
-        <footer class="footer">
+                <div class="footer-brand">
 
-            <div class="container">
-
-                <div class="footer-grid">
-
-                    <div class="footer-brand">
-
-                        <div class="footer-logo">
-                            <img src="static/logo.png" alt="Hariom Solar Logo" class="custom-logo">
-                            <span>Hariom Solar</span>
-                        </div>
-
-                        <p class="footer-description">
-                            Hariom Solar 3rd Floor ShubhamKaroti Complex Near Civil Court
-                            Nandura Road Khamgaon.
-                        </p>
-
-                        <div class="social-links">
-
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-
-                        </div>
-
+                    <div class="footer-logo">
+                        <img src="static/logo.png" alt="Hariom Solar Logo" class="custom-logo">
+                        <span>Hariom Solar</span>
                     </div>
 
+                    <p class="footer-description">
+                        Hariom Solar 3rd Floor ShubhamKaroti Complex Near Civil Court
+                        Nandura Road Khamgaon.
+                    </p>
 
-                    <div class="footer-links">
+                    <div class="social-links">
 
-                        <h3 class="footer-heading">Company</h3>
-
-                        <ul>
-                            <li><a href="index.html#about">About Us</a></li>
-                            <li><a href="careers.html">Careers</a></li>
-                            <li><a href="#">Our Team</a></li>
-                            <li><a href="#">Blog</a></li>
-                        </ul>
-
-                    </div>
-
-
-                    <div class="footer-links">
-
-                        <h3 class="footer-heading">Resources</h3>
-
-                        <ul>
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="#" onclick="openCalculator()">Solar Calculator</a></li>
-                            <li><a href="#">Financing</a></li>
-                            <li><a href="index.html#contact">Contact</a></li>
-                        </ul>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
 
                     </div>
 
                 </div>
 
 
-                <div class="footer-bottom">
+                <div class="footer-links">
 
-                    <p>
-                        © 2026 Hariom Solar. All rights reserved.
-                    </p>
+                    <h3 class="footer-heading">Company</h3>
+
+                    <ul>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="#">Our Team</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+
+                </div>
+
+
+                <div class="footer-links">
+
+                    <h3 class="footer-heading">Resources</h3>
+
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#" onclick="openCalculator()">Solar Calculator</a></li>
+                        <li><a href="#">Financing</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
 
                 </div>
 
             </div>
 
-        </footer>
+
+            <div class="footer-bottom">
+
+                <p>
+                    © 2026 Hariom Solar. All rights reserved.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
 
 
-        <script src="static/script.js"></script>
+    <script src="static/script.js"></script>
 
 </body>
 
