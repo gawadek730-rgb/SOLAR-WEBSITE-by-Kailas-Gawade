@@ -117,7 +117,9 @@ if (quoteForm) {
 
             if (response.result === "success") {
 
-                message.innerHTML = "✅ Form Submitted Successfully!";
+                alert("✅ Quote Request Submitted Successfully!");
+
+                message.innerHTML = "Submitted Successfully!";
                 message.style.color = "green";
 
                 quoteForm.reset();
@@ -125,19 +127,19 @@ if (quoteForm) {
                 setTimeout(() => {
                     closeForm();
                     message.style.display = "none";
-                }, 4000);
+                }, 3000);
 
             } else {
 
-                message.innerHTML = "❌ Submission Failed!";
+                alert("❌ Quote submission failed!");
+                message.innerHTML = "Submission Failed!";
                 message.style.color = "red";
 
             }
 
         } catch (error) {
 
-            message.innerHTML = "❌ Error submitting form!";
-            message.style.color = "red";
+            alert("❌ Error submitting form!");
             console.error(error);
 
         }
@@ -185,7 +187,7 @@ window.onclick = function (event) {
 
 
 // ===============================
-// CAREER FORM SUBMIT (WITH RESUME)
+// CAREER FORM SUBMIT (MONGODB)
 // ===============================
 const careerApplyForm = document.getElementById("careerApplyForm");
 
@@ -195,14 +197,7 @@ if (careerApplyForm) {
 
         e.preventDefault();
 
-        const message = document.getElementById("careerMessage");
         const submitBtn = careerApplyForm.querySelector("button");
-
-        if (message) {
-            message.innerHTML = "⏳ Uploading Application...";
-            message.style.color = "orange";
-            message.style.display = "block";
-        }
 
         if (submitBtn) {
             submitBtn.disabled = true;
@@ -222,11 +217,7 @@ if (careerApplyForm) {
 
             if (result.status === "success") {
 
-                if (message) {
-                    alert("✅ Application Submitted Successfully!");
-                    message.innerHTML = "✅ Application Submitted Successfully!";
-                    message.style.color = "green";
-                }
+                alert("✅ Application Submitted Successfully!");
 
                 careerApplyForm.reset();
 
@@ -234,21 +225,16 @@ if (careerApplyForm) {
 
                     closeCareerForm();
 
-                    if (message) message.style.display = "none";
-
                     if (submitBtn) {
                         submitBtn.disabled = false;
                         submitBtn.innerText = "Submit Application";
                     }
 
-                }, 4000);
+                }, 2000);
 
             } else {
 
-                if (message) {
-                    message.innerHTML = "❌ Submission Failed!";
-                    message.style.color = "red";
-                }
+                alert("❌ Application Submission Failed!");
 
                 if (submitBtn) {
                     submitBtn.disabled = false;
@@ -259,10 +245,7 @@ if (careerApplyForm) {
 
         } catch (error) {
 
-            if (message) {
-                message.innerHTML = "❌ Server Error!";
-                message.style.color = "red";
-            }
+            alert("❌ Server Error! Please try again.");
 
             if (submitBtn) {
                 submitBtn.disabled = false;
