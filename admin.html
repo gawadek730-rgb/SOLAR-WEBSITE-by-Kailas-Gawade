@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Panel</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- NAVBAR (Same as index page) -->
+    <nav class="navbar">
+        <div class="nav-container">
+
+            <div class="nav-brand">
+                <img src="logo.png" class="custom-logo">
+                <span>My Company</span>
+            </div>
+
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="#" class="nav-link">Services</a>
+                <a href="#" class="nav-link">Gallery</a>
+                <a href="#" class="nav-link">Careers</a>
+                <a href="admin.html" class="nav-link">Admin</a>
+            </div>
+
+            <button class="mobile-menu-btn">
+                <i class="fa fa-bars"></i>
+            </button>
+
+        </div>
+    </nav>
+
+    <!-- ADMIN SECTION -->
+    <section class="section-padding" style="margin-top:120px">
+
+        <div class="container">
+
+            <h1 style="margin-bottom:30px">Admin Panel</h1>
+
+            <div class="admin-box">
+
+                <h2>Uploaded Resumes</h2>
+
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Resume</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="resumeTable">
+
+                        <tr>
+                            <td>John Doe</td>
+                            <td>john@email.com</td>
+                            <td><a href="#">View PDF</a></td>
+                            <td><button class="btn btn-primary">Delete</button></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER (Same as website) -->
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div>
+                    <div class="footer-logo">
+                        <img src="logo.png">
+                        <span>My Company</span>
+                    </div>
+
+                    <p class="footer-description">
+                        Professional shifting and logistics services.
+                    </p>
+                </div>
+
+                <div class="footer-links">
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h3 class="footer-heading">Contact</h3>
+                    <ul>
+                        <li>+91 9876543210</li>
+                        <li>info@email.com</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                © 2026 My Company. All rights reserved.
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

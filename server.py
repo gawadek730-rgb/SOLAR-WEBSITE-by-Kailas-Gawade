@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from pymongo import MongoClient
 import os
@@ -10,7 +10,6 @@ CORS(app)
 # ===============================
 # Upload Folder
 # ===============================
-
 UPLOAD_FOLDER = "resumes"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
@@ -21,26 +20,24 @@ ALLOWED_EXTENSIONS = {"pdf", "doc", "docx"}
 # ===============================
 # MongoDB Connection
 # ===============================
+client = MongoClient("mongodb+srv://hariomsolar:hariom123@cluster0.578ty4a.mongodb.net/hariomsolar?retryWrites=true&w=majority")
 
-client = MongoClient("mongodb+srv://hariomsolar:hariom123@cluster0.578ty4a.mongodb.net/")
 db = client["hariomsolar"]
 collection = db["career_applications"]
 
-print("MongoDB Connected")
+print("✅ MongoDB Connected")
 
 
 # ===============================
 # Check Allowed File
 # ===============================
-
 def allowed_file(filename):
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
 # ===============================
-# Apply API
+# APPLY API
 # ===============================
-
 @app.route("/apply", methods=["POST"])
 def apply():
     try:
@@ -52,7 +49,7 @@ def apply():
 
         resume = request.files.get("resume")
 
-        resume_path = ""
+        resume_filename = ""
 
         if resume and allowed_file(resume.filename):
 
@@ -62,14 +59,14 @@ def apply():
 
             resume.save(filepath)
 
-            resume_path = filepath
+            resume_filename = filename
 
         data = {
             "name": name,
             "email": email,
             "phone": phone,
             "position": position,
-            "resume": resume_path
+            "resume": resume_filename
         }
 
         collection.insert_one(data)
@@ -80,6 +77,7 @@ def apply():
         })
 
     except Exception as e:
+
         return jsonify({
             "status": "error",
             "message": str(e)
@@ -87,45 +85,40 @@ def apply():
 
 
 # ===============================
-# Home
-# ===============================
-
-@app.route("/")
-def home():
-    return "Hariom Solar API Running"
-
-
-
-    # ===============================
-# ADMIN API (GET ALL APPLICATIONS)
+# ADMIN API (GET APPLICATIONS)
 # ===============================
 @app.route("/applications", methods=["GET"])
 def get_applications():
 
-    apps = []
+    applications = []
 
     for app_data in collection.find():
-        app_data["_id"] = str(app_data["_id"])
-        apps.append(app_data)
 
-    return jsonify(apps)
+        app_data["_id"] = str(app_data["_id"])
+        applications.append(app_data)
+
+    return jsonify(applications)
 
 
 # ===============================
 # DOWNLOAD RESUME
 # ===============================
-@app.route('/resume/<filename>')
+@app.route("/resume/<filename>")
 def download_resume(filename):
-    return send_from_directory(UPLOAD_FOLDER, filename)
 
-
-if __name__ == "__main__":
-    app.run(debug=True)
+    return send_from_directory(app.config["UPLOAD_FOLDER"], filename)
 
 
 # ===============================
-# Run Server
+# HOME API
 # ===============================
+@app.route("/")
+def home():
+    return "🚀 Hariom Solar API Running"
 
+
+# ===============================
+# RUN SERVER
+# ===============================
 if __name__ == "__main__":
     app.run(port=5000, debug=True)
