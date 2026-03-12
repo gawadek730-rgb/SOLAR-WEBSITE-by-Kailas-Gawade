@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Admin Panel | Hariom Solar</title>
+
+    <link rel="stylesheet" href="/static/styles.css">
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f4f4;
+            padding: 40px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background: #ff9900;
+            color: white;
+        }
+
+        button {
+            padding: 6px 12px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .download {
+            background: green;
+            color: white;
+        }
+
+        .delete {
+            background: red;
+            color: white;
+        }
+
+        .refresh {
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background: #333;
+            color: white;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Hariom Solar Career Applications</h1>
+
+    <button class="refresh" onclick="loadApplications()">Refresh Data</button>
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Position</th>
+                <th>Resume</th>
+                <th>Action</th>
+            </tr>
+
+        </thead>
+
+        <tbody id="appTable"></tbody>
+
+    </table>
+
+    <script src="/static/admin.js"></script>
+
+</body>
+
+</html>
