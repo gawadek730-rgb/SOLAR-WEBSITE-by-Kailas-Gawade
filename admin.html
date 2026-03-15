@@ -2,76 +2,192 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Admin Panel</title>
+    <title>Admin Panel | Hariom Solar</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="static/styles.css">
 
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+    <style>
+        .admin-section {
+            margin-top: 120px;
+        }
+
+        /* DASHBOARD */
+
+        .dashboard-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .dashboard-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .dashboard-card i {
+            font-size: 30px;
+            color: #22c55e;
+            margin-bottom: 10px;
+        }
+
+        .dashboard-card h3 {
+            margin: 10px 0;
+            color: #444;
+        }
+
+        .dashboard-card p {
+            font-size: 28px;
+            font-weight: bold;
+            color: #111;
+        }
+
+        /* TABLE */
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            margin-top: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .admin-table th {
+            background: #f3f4f6;
+            padding: 14px;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .admin-table td {
+            padding: 14px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .admin-table tr:hover {
+            background: #fafafa;
+        }
+
+        /* BUTTONS */
+
+        .delete-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .download-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        /* SEARCH */
+
+        .search-box {
+            margin-top: 20px;
+        }
+
+        .search-box input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            width: 280px;
+        }
+
+        .sort-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-left: 6px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .sort-btn:hover {
+            color: #000;
+        }
+    </style>
 
 </head>
 
 <body>
 
-    <!-- NAVBAR (Same as index page) -->
-    <nav class="navbar">
-        <div class="nav-container">
+    <nav class="navbar" id="navbar">
+
+        <div class="container nav-container">
 
             <div class="nav-brand">
-                <img src="logo.png" class="custom-logo">
-                <span>My Company</span>
+
+                <img src="static/logo.png" class="custom-logo">
+
+                <span>Hariom Solar</span>
+
             </div>
 
             <div class="nav-menu">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="#" class="nav-link">Services</a>
-                <a href="#" class="nav-link">Gallery</a>
-                <a href="#" class="nav-link">Careers</a>
-                <a href="admin.html" class="nav-link">Admin</a>
+
+                <a href="index.html" class="nav-link">Website</a>
+                <a href="#leads" class="nav-link">Quote Leads</a>
+                <a href="#careers" class="nav-link">Career Applications</a>
+
+                <button class="btn btn-primary">Admin Panel</button>
+
+                <button class="btn btn-primary" onclick="logout()">Logout</button>
+
             </div>
 
-            <button class="mobile-menu-btn">
-                <i class="fa fa-bars"></i>
-            </button>
-
         </div>
+
     </nav>
 
-    <!-- ADMIN SECTION -->
-    <section class="section-padding" style="margin-top:120px">
+    <!-- DASHBOARD -->
+
+    <section class="admin-section section-padding">
 
         <div class="container">
 
-            <h1 style="margin-bottom:30px">Admin Panel</h1>
+            <h2 class="section-title">Admin Dashboard</h2>
 
-            <div class="admin-box">
+            <div class="dashboard-cards">
 
-                <h2>Uploaded Resumes</h2>
+                <div class="dashboard-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Total Leads</h3>
+                    <p id="totalLeads">0</p>
+                </div>
 
-                <table class="admin-table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Resume</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
+                <div class="dashboard-card">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>Career Applications</h3>
+                    <p id="totalApplications">0</p>
+                </div>
 
-                    <tbody id="resumeTable">
-
-                        <tr>
-                            <td>John Doe</td>
-                            <td>john@email.com</td>
-                            <td><a href="#">View PDF</a></td>
-                            <td><button class="btn btn-primary">Delete</button></td>
-                        </tr>
-
-                    </tbody>
-                </table>
+                <div class="dashboard-card">
+                    <i class="fas fa-calendar-day"></i>
+                    <h3>Today's Leads</h3>
+                    <p id="todayLeads">0</p>
+                </div>
 
             </div>
 
@@ -79,51 +195,358 @@
 
     </section>
 
-    <!-- FOOTER (Same as website) -->
-    <footer class="footer">
+    <!-- LEADS -->
+
+    <section id="leads" class="section-padding">
 
         <div class="container">
 
-            <div class="footer-grid">
+            <h2 class="section-title">Customer Quote Requests</h2>
 
-                <div>
-                    <div class="footer-logo">
-                        <img src="logo.png">
-                        <span>My Company</span>
-                    </div>
+            <button class="download-btn" onclick="downloadLeads()">Download Excel</button>
 
-                    <p class="footer-description">
-                        Professional shifting and logistics services.
-                    </p>
-                </div>
-
-                <div class="footer-links">
-                    <h3 class="footer-heading">Quick Links</h3>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Gallery</a></li>
-                        <li><a href="#">Careers</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-links">
-                    <h3 class="footer-heading">Contact</h3>
-                    <ul>
-                        <li>+91 9876543210</li>
-                        <li>info@email.com</li>
-                    </ul>
-                </div>
-
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search Leads..." onkeyup="searchLeads()">
             </div>
 
-            <div class="footer-bottom">
-                © 2026 My Company. All rights reserved.
-            </div>
+            <table class="admin-table" id="leadTable">
+
+                <thead>
+
+                    <tr>
+                    <tr>
+                        <th>Date
+                            <button class="sort-btn" onclick="event.stopPropagation(); sortTable(0)">
+                                <i class="fa-solid fa-sort"></i>
+                            </button>
+                        </th>
+
+                        <th>Name
+                            <button class="sort-btn" onclick="event.stopPropagation(); sortTable(1)">
+                                <i class="fa-solid fa-sort"></i>
+                            </button>
+                        </th>
+
+                        <th>Email
+                            <button class="sort-btn" onclick="event.stopPropagation(); sortTable(2)">
+                                <i class="fa-solid fa-sort"></i>
+                            </button>
+                        </th>
+
+                        <th>Phone
+                            <button class="sort-btn" onclick="event.stopPropagation(); sortTable(3)">
+                                <i class="fa-solid fa-sort"></i>
+                            </button>
+                        </th>
+
+                        <th>City
+                            <button class="sort-btn" onclick="event.stopPropagation(); sortTable(4)">
+                                <i class="fa-solid fa-sort"></i>
+                            </button>
+                        </th>
+
+                        <th>Solar Type
+                            <button class="sort-btn" onclick="event.stopPropagation(); sortTable(5)">
+                                <i class="fa-solid fa-sort"></i>
+                            </button>
+                        </th>
+                    </tr>
+                    </tr>
+
+                </thead>
+
+                <tbody id="leadBody">
+
+                    <tr>
+                        <td colspan="6">Loading leads...</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
 
         </div>
 
+    </section>
+
+    <!-- CAREERS -->
+
+    <section class="section-padding" id="careers">
+
+        <div class="container">
+
+            <h2 class="section-title">Career Applications</h2>
+
+            <button class="download-btn" onclick="downloadApplications()">Download Excel</button>
+
+            <table class="admin-table" id="careerTableMain">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Name
+                            <button class="sort-btn" onclick="event.stopPropagation(); sortCareer(0)">
+                                <i class="fa-solid fa-sort"></i>
+                            </button>
+                        </th>
+
+                        <th>Email
+                            <button class="sort-btn" onclick="event.stopPropagation(); sortCareer(1)">
+                                <i class="fa-solid fa-sort"></i>
+                            </button>
+                        </th>
+
+                        <th>Phone
+                            <button class="sort-btn" onclick="event.stopPropagation(); sortCareer(2)">
+                                <i class="fa-solid fa-sort"></i>
+                            </button>
+                        </th>
+
+                        <th>Resume</th>
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="careerTable">
+
+                    <tr>
+                        <td colspan="5">Loading applications...</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Hariom Solar Admin Panel</p>
+        </div>
     </footer>
+
+    <script>
+
+        /* GOOGLE SHEET LEADS */
+
+        async function loadLeads() {
+
+            const url = "https://opensheet.elk.sh/1ZcGxEIDOwIPWJth3fKhvDRyTjkXR0P4HJS2gAk6O-xA/Form%20Responses%201";
+
+            const res = await fetch(url);
+            const data = await res.json();
+
+            const table = document.getElementById("leadBody");
+
+            table.innerHTML = "";
+
+            document.getElementById("totalLeads").innerText = data.length;
+
+            let today = new Date().toLocaleDateString();
+            let todayCount = 0;
+
+            data.forEach(lead => {
+
+                if (lead["Date and Time"]?.includes(today)) todayCount++;
+
+                const row = `
+
+<tr>
+
+<td>${lead["Date and Time"]}</td>
+<td>${lead.NAME}</td>
+<td>${lead.EMAIL}</td>
+<td>${lead.CONTACT}</td>
+<td>${lead.CITY}</td>
+<td>${lead["SOLAR TYPE"]}</td>
+
+</tr>
+
+`;
+
+                table.innerHTML += row;
+
+            });
+
+            document.getElementById("todayLeads").innerText = todayCount;
+
+            window.leadData = data;
+
+        }
+
+        loadLeads();
+
+
+        /* SORT LEADS */
+
+        let leadSortAsc = true;
+
+        function sortTable(col) {
+
+            let table = document.getElementById("leadBody");
+            let rows = Array.from(table.rows);
+
+            rows.sort((a, b) => {
+
+                let x = a.cells[col].innerText.toLowerCase();
+                let y = b.cells[col].innerText.toLowerCase();
+
+                return leadSortAsc ? x.localeCompare(y) : y.localeCompare(x);
+
+            });
+
+            leadSortAsc = !leadSortAsc;
+
+            table.innerHTML = "";
+
+            rows.forEach(r => table.appendChild(r));
+
+        }
+
+
+        /* SORT CAREER */
+
+        let careerSortAsc = true;
+
+        function sortCareer(col) {
+
+            let table = document.getElementById("careerTable");
+            let rows = Array.from(table.rows);
+
+            rows.sort((a, b) => {
+
+                let x = a.cells[col].innerText.toLowerCase();
+                let y = b.cells[col].innerText.toLowerCase();
+
+                return careerSortAsc ? x.localeCompare(y) : y.localeCompare(x);
+
+            });
+
+            careerSortAsc = !careerSortAsc;
+
+            table.innerHTML = "";
+
+            rows.forEach(r => table.appendChild(r));
+
+        }
+
+
+        /* SEARCH */
+
+        function searchLeads() {
+
+            let input = document.getElementById("searchInput").value.toLowerCase();
+
+            let rows = document.querySelectorAll("#leadTable tbody tr");
+
+            rows.forEach(row => {
+
+                let text = row.innerText.toLowerCase();
+
+                row.style.display = text.includes(input) ? "" : "none";
+
+            });
+
+        }
+
+
+        /* DOWNLOAD LEADS */
+
+        function downloadLeads() {
+
+            const ws = XLSX.utils.json_to_sheet(window.leadData);
+
+            const wb = XLSX.utils.book_new();
+
+            XLSX.utils.book_append_sheet(wb, ws, "Leads");
+
+            XLSX.writeFile(wb, "Hariom_Solar_Leads.xlsx");
+
+        }
+
+
+        /* LOAD APPLICATIONS */
+
+        async function loadApplications() {
+
+            const table = document.getElementById("careerTable");
+
+            const res = await fetch("http://127.0.0.1:5000/applications");
+
+            const data = await res.json();
+
+            table.innerHTML = "";
+
+            document.getElementById("totalApplications").innerText = data.length;
+
+            data.forEach(app => {
+
+                const row = `
+
+<tr>
+
+<td>${app.name}</td>
+<td>${app.email}</td>
+<td>${app.phone}</td>
+
+<td>
+<a href="http://127.0.0.1:5000/resume/${app.resume}" target="_blank">View Resume</a>
+</td>
+
+<td>
+<button class="delete-btn" onclick="deleteApplication('${app._id}')">Delete</button>
+</td>
+
+</tr>
+
+`;
+
+                table.innerHTML += row;
+
+            });
+
+            window.applicationData = data;
+
+        }
+
+        loadApplications();
+
+
+        /* DELETE */
+
+        async function deleteApplication(id) {
+
+            if (!confirm("Delete this application?")) return;
+
+            await fetch(`http://127.0.0.1:5000/delete/${id}`, { method: "DELETE" });
+
+            alert("Application Deleted");
+
+            loadApplications();
+
+        }
+
+
+        /* LOGIN CHECK */
+
+        if (localStorage.getItem("adminLogged") !== "true") {
+            window.location.href = "admin-login.html";
+        }
+
+
+        /* LOGOUT */
+
+        function logout() {
+            localStorage.removeItem("adminLogged");
+            window.location.href = "admin-login.html";
+        }
+
+    </script>
 
 </body>
 

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hariom Solar Admin Dashboard</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #f4f6f9;
+        }
+
+        /* SIDEBAR */
+
+        .sidebar {
+            width: 230px;
+            height: 100vh;
+            background: #111827;
+            color: white;
+            position: fixed;
+            padding-top: 20px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+        }
+
+        .sidebar a:hover {
+            background: #1f2937;
+        }
+
+        /* MAIN AREA */
+
+        .main {
+            margin-left: 230px;
+            padding: 30px;
+        }
+
+        /* DASHBOARD CARDS */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .card h3 {
+            margin: 0;
+            color: #555;
+        }
+
+        .card h1 {
+            margin-top: 10px;
+        }
+
+        /* TABLE */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            margin-top: 20px;
+        }
+
+        th {
+            background: #f3f4f6;
+            padding: 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        tr:hover {
+            background: #fafafa;
+        }
+
+        .btn {
+            padding: 6px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .call {
+            background: #10b981;
+            color: white;
+        }
+
+        .whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .delete {
+            background: #ef4444;
+            color: white;
+        }
+
+        .download {
+            background: #2563eb;
+            color: white;
+            margin-bottom: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+
+        <h2>Hariom Solar</h2>
+
+        <a href="#dashboard">Dashboard</a>
+        <a href="#leads">Customer Leads</a>
+        <a href="#careers">Career Applications</a>
+
+    </div>
+
+
+    <div class="main">
+
+        <!-- DASHBOARD -->
+
+        <section id="dashboard">
+
+            <h2>Dashboard</h2>
+
+            <div class="cards">
+
+                <div class="card">
+                    <h3>Total Leads</h3>
+                    <h1 id="totalLeads">0</h1>
+                </div>
+
+                <div class="card">
+                    <h3>Career Applications</h3>
+                    <h1 id="totalApplications">0</h1>
+                </div>
+
+                <div class="card">
+                    <h3>Today's Leads</h3>
+                    <h1 id="todayLeads">0</h1>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- LEADS -->
+
+        <section id="leads">
+
+            <h2>Customer Quote Leads</h2>
+
+            <button class="btn download" onclick="downloadLeads()">Download Excel</button>
+
+            <table id="leadTable">
+
+                <thead>
+
+                    <tr>
+                        <th>Date</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>City</th>
+                        <th>Solar Type</th>
+                        <th>Action</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="leadBody">
+
+                    <tr>
+                        <td colspan="7">Loading leads...</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+
+
+        <!-- CAREER APPLICATIONS -->
+
+        <section id="careers">
+
+            <h2>Career Applications</h2>
+
+            <button class="btn download" onclick="downloadApplications()">Download Excel</button>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Resume</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="careerBody">
+
+                    <tr>
+                        <td colspan="4">Loading applications...</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </div>
+
+
+
+    <script>
+
+        /* GOOGLE SHEET LEADS */
+
+        async function loadLeads() {
+
+            const url = "https://opensheet.elk.sh/1ZcGxEIDOwIPWJth3fKhvDRyTjkXR0P4HJS2gAk6O-xA/Form%20Responses%201";
+
+            const res = await fetch(url);
+            const data = await res.json();
+
+            const table = document.getElementById("leadBody");
+
+            table.innerHTML = "";
+
+            document.getElementById("totalLeads").innerText = data.length;
+
+            data.forEach(lead => {
+
+                const row = `
+
+<tr>
+
+<td>${lead["Date and Time"]}</td>
+<td>${lead.NAME}</td>
+<td>${lead.EMAIL}</td>
+
+<td>
+${lead.CONTACT}
+
+<button class="btn call" onclick="window.location='tel:${lead.CONTACT}'">
+<i class="fa fa-phone"></i>
+</button>
+
+<button class="btn whatsapp"
+onclick="window.open('https://wa.me/91${lead.CONTACT}')">
+
+<i class="fab fa-whatsapp"></i>
+
+</button>
+
+</td>
+
+<td>${lead.CITY}</td>
+
+<td>${lead["SOLAR TYPE"]}</td>
+
+<td>
+<button class="btn delete">Delete</button>
+</td>
+
+</tr>
+
+`;
+
+                table.innerHTML += row;
+
+            });
+
+            window.leadData = data;
+
+        }
+
+        loadLeads();
+
+
+
+        /* DOWNLOAD LEADS EXCEL */
+
+        function downloadLeads() {
+
+            const ws = XLSX.utils.json_to_sheet(window.leadData);
+
+            const wb = XLSX.utils.book_new();
+
+            XLSX.utils.book_append_sheet(wb, ws, "Leads");
+
+            XLSX.writeFile(wb, "Solar_Leads.xlsx");
+
+        }
+
+
+
+        /* CAREER APPLICATIONS */
+
+        async function loadApplications() {
+
+            const res = await fetch("http://127.0.0.1:5000/applications");
+
+            const data = await res.json();
+
+            const table = document.getElementById("careerBody");
+
+            table.innerHTML = "";
+
+            document.getElementById("totalApplications").innerText = data.length;
+
+            data.forEach(app => {
+
+                const row = `
+
+<tr>
+
+<td>${app.name}</td>
+<td>${app.email}</td>
+<td>${app.phone}</td>
+
+<td>
+<a href="http://127.0.0.1:5000/resume/${app.resume}" target="_blank">
+View Resume
+</a>
+</td>
+
+</tr>
+
+`;
+
+                table.innerHTML += row;
+
+            });
+
+            window.applicationData = data;
+
+        }
+
+        loadApplications();
+
+
+
+        /* DOWNLOAD APPLICATIONS */
+
+        function downloadApplications() {
+
+            const ws = XLSX.utils.json_to_sheet(window.applicationData);
+
+            const wb = XLSX.utils.book_new();
+
+            XLSX.utils.book_append_sheet(wb, ws, "Applications");
+
+            XLSX.writeFile(wb, "Career_Applications.xlsx");
+
+        }
+
+    </script>
+
+</body>
+
+</html>

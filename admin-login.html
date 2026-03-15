@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Login | Hariom Solar</title>
+
+    <link rel="stylesheet" href="static/styles.css">
+
+    <style>
+        /* PAGE BACKGROUND */
+
+        body {
+            background: #f4f6f9;
+            font-family: Arial;
+        }
+
+        /* LOGIN SECTION */
+
+        .login-section {
+            margin-top: 120px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* LOGIN CARD */
+
+        .login-box {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            width: 360px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        /* LOGO */
+
+        .login-box img {
+            width: 80px;
+            margin-bottom: 10px;
+        }
+
+        /* INPUT */
+
+        .login-box input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+
+        /* BUTTON */
+
+        .login-box button {
+            margin-top: 15px;
+            padding: 12px;
+            width: 100%;
+            border: none;
+            background: #eab308;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* BUTTON HOVER */
+
+        .login-box button:hover {
+            background: #eab308;
+        }
+
+        /* LOADING SPINNER */
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #eab308;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-left: 8px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar" id="navbar">
+
+        <div class="container nav-container">
+
+            <div class="nav-brand">
+
+                <img src="static/logo.png" class="custom-logo">
+
+                <span>Hariom Solar</span>
+
+            </div>
+
+            <div class="nav-menu">
+
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#services" class="nav-link">Services</a>
+                <a href="index.html#about" class="nav-link">About</a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- LOGIN SECTION -->
+
+    <section class="login-section">
+
+        <div class="login-box">
+
+            <img src="static/logo.png">
+
+            <h2>Hariom Solar Admin</h2>
+
+            <input type="email" id="email" placeholder="Enter Admin Email">
+
+            <button id="sendBtn" onclick="sendOTP()">
+                Send OTP
+                <span id="loader" class="spinner hidden"></span>
+            </button>
+
+            <br><br>
+
+            <input type="text" id="otp" placeholder="Enter OTP">
+
+            <button onclick="verifyOTP()">Login</button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="footer-bottom">
+
+                <p>© 2026 Hariom Solar</p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <script>
+
+        /* SEND OTP */
+
+        async function sendOTP() {
+
+            let email = document.getElementById("email").value;
+
+            let loader = document.getElementById("loader");
+
+            let btn = document.getElementById("sendBtn");
+
+            loader.classList.remove("hidden");
+
+            btn.disabled = true;
+
+            btn.innerText = "Sending OTP...";
+
+            const res = await fetch("http://127.0.0.1:5000/send-otp", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({ email: email })
+
+            });
+
+            loader.classList.add("hidden");
+
+            btn.disabled = false;
+
+            btn.innerText = "Send OTP";
+
+            alert("OTP Sent to Email");
+
+        }
+
+
+
+        /* VERIFY OTP */
+
+        async function verifyOTP() {
+
+            let email = document.getElementById("email").value;
+
+            let otp = document.getElementById("otp").value;
+
+            const res = await fetch("http://127.0.0.1:5000/verify-otp", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    email: email,
+                    otp: otp
+                })
+
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+
+                localStorage.setItem("adminLogged", "true");
+
+                window.location.href = "admin.html";
+
+            }
+
+            else {
+
+                alert("Invalid OTP");
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

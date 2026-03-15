@@ -87,6 +87,8 @@
                 <a href="#about" class="nav-link">About</a>
                 <a href="#testimonials" class="nav-link">Testimonials</a>
                 <a href="#contact" class="nav-link">Contact</a>
+
+
                 <button onclick="showForm()" class="btn btn-primary">Get Quote</button>
             </div>
 
@@ -605,6 +607,24 @@
             </div>
         </div>
     </footer>
+
+    <script>
+
+        let logoClick = 0;
+
+        document.querySelector(".custom-logo").addEventListener("click", function () {
+
+            logoClick++;
+
+            if (logoClick === 5) {
+
+                window.location.href = "admin-login.html";
+
+            }
+
+        });
+
+    </script>
 
     <script src="static/script.js"></script>
 </body>
